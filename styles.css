@@ -3,6 +3,11 @@ body {
   font-family: Arial;
 }
 
+#selector {
+  width: 240px;
+  line-height: 2;
+}
+
 .img-wrapper {
   border-top: 3px solid white;
   margin: 3px;

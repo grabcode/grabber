@@ -1,6 +1,6 @@
 var grabImages = function(doc) {
   var images   = [],
-      imagesEl = doc.querySelectorAll('.js-img-list img:not([src=""])');
+      imagesEl = doc.querySelectorAll(config.selector);
 
   for (i = 0, l=imagesEl.length; i < l; ++i) {
     images.push(imagesEl[i].src);

@@ -3,6 +3,24 @@ var controlsEl = document.querySelector('#controls');
 var downloadEl = document.querySelector('#download');
 var deselectAllEl = document.querySelector('#deselectAll');
 var selectAllEl = document.querySelector('#selectAll');
+var backEl = document.querySelector('#back');
+
+var configEl = document.querySelector("#config");
+var selectorEl = document.querySelector("#selector");
+var tryEl = document.querySelector('#try');
+
+tryEl.addEventListener('click', function(){
+  var config = {selector: selectorEl.value};
+  configEl.classList.add('hide');
+  assetsEl.classList.remove('hide');
+  fetchAssets(config);
+});
+
+backEl.addEventListener('click', function(){
+  configEl.classList.remove('hide');
+  assetsEl.classList.add('hide');
+  controlsEl.classList.add('hide');
+});
 
 chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action == "grabAssets") {
@@ -31,16 +49,19 @@ chrome.runtime.onMessage.addListener(function(request, sender) {
   }
 });
 
-function onWindowLoad() {
+function fetchAssets(config) {
   chrome.tabs.executeScript(null, {
-    file: "src/injected.js"
+      code: 'var config = ' + JSON.stringify(config)
   }, function() {
-    // If you try and inject into an extensions page or the webstore/NTP you'll get an error
-    if (chrome.runtime.lastError) {
-      message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
-    }
+
+    chrome.tabs.executeScript(null, {
+      file: "src/injected.js"
+    }, function() {
+      // If you try and inject into an extensions page or the webstore/NTP you'll get an error
+      if (chrome.runtime.lastError) {
+        message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
+      }
+    });
   });
 
 }
-
-window.onload = onWindowLoad;
