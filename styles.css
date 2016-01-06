@@ -1,0 +1,28 @@
+body {
+  width: 340px;
+  font-family: Arial;
+}
+
+.img-wrapper {
+  border-top: 3px solid white;
+  margin: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.img-wrapper.selected {
+  border-color: red;
+}
+
+#controls {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}

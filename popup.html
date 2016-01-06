@@ -2,16 +2,19 @@
 <html>
   <head>
     <title>Grabber</title>
-    <script src="popup.js"></script>
-    <style>
-    body {
-      width: 400px;
-    }
-    </style>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div id="message">Loading...</div>
-    <!-- <button id="checkPage">Check this page now!</button> -->
-    <script src="grabber.js"></script>
+    <div id="controls" class="hide">
+      <button id="download">Download</button>
+      <button id="selectAll">Select All</button>
+      <button id="deselectAll">Deselect All</button>
+    </div>
+    <div id="assets">
+      Loading...
+    </div>
+    <script src="src/util.js"></script>
+    <script src="src/assets_view.js"></script>
+    <script src="src/grabber.js"></script>
   </body>
 </html>
