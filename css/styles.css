@@ -1,0 +1,11 @@
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+header {
+  margin-left: 30px;
+}
